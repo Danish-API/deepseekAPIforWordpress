@@ -1,0 +1,62 @@
+Base URL
+https://api.deepseek.com/v1/
+
+Authentication
+API-Key header with JWT token
+
+Endpoints
+
+1. How to generate content:
+
+/deepthink/generate
+
+Request
+{
+  "prompt": "string",
+  "max_tokens": 300,
+  "temperature": 0.7,
+  "web_context": {
+    "page_content": "string",
+    "metadata": {
+      "url": "string",
+      "keywords": ["string"]
+    }
+  }
+}
+
+Response
+{
+  "id": "gen_123",
+  "output": "string",
+  "tokens_used": 42,
+  "web_analysis": {
+    "summary": "string",
+    "recommendations": ["string"]
+  }
+}
+
+2. Analyze Existing Content
+
+/deepthink/analyze
+
+Request
+{
+  "content": "string",
+  "seo_focus": true
+}
+
+Response
+{
+  "seo_score": 85,
+  "improvement_suggestions": ["string"],
+  "readability_grade": "B"
+}
+
+Error handling
+{
+  "error": {
+    "code": 429,
+    "message": "Rate limit exceeded",
+    "retry_after": 60
+  }
+}
